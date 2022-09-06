@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = CarouselViewController();
 //        window?.rootViewController = PlayerViewController();
         
-        window?.rootViewController = UINavigationController(rootViewController: MainViewController());
+        window?.rootViewController = UINavigationController(rootViewController: ReactiveViewController());
 
         
         return true;

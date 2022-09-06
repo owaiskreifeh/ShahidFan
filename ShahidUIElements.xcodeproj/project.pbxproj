@@ -27,6 +27,8 @@
 		A2F1431E28C76FA80091CCAF /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431D28C76FA80091CCAF /* Channel.swift */; };
 		A2F1432228C7CC100091CCAF /* UpsellModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432128C7CC100091CCAF /* UpsellModalView.swift */; };
 		A2F1432428C7D1DA0091CCAF /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */; };
+		A2F1432728C7F2870091CCAF /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432628C7F2870091CCAF /* ReactiveButton.swift */; };
+		A2F1432928C7F2980091CCAF /* ReactiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */; };
 		A2FF13A028BA746A002F4F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF139F28BA746A002F4F54 /* AppDelegate.swift */; };
 		A2FF13A928BA746C002F4F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13A828BA746C002F4F54 /* Assets.xcassets */; };
 		A2FF13AC28BA746C002F4F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13AA28BA746C002F4F54 /* LaunchScreen.storyboard */; };
@@ -57,6 +59,8 @@
 		A2F1431D28C76FA80091CCAF /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		A2F1432128C7CC100091CCAF /* UpsellModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellModalView.swift; sourceTree = "<group>"; };
 		A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		A2F1432628C7F2870091CCAF /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
+		A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewController.swift; sourceTree = "<group>"; };
 		A2FF139C28BA746A002F4F54 /* ShahidUIElements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShahidUIElements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FF139F28BA746A002F4F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FF13A828BA746C002F4F54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			path = Upsell;
 			sourceTree = "<group>";
 		};
+		A2F1432528C7F2730091CCAF /* ReactiveButton */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1432628C7F2870091CCAF /* ReactiveButton.swift */,
+				A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */,
+			);
+			path = ReactiveButton;
+			sourceTree = "<group>";
+		};
 		A2FF139328BA746A002F4F54 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +181,7 @@
 		A2FF139E28BA746A002F4F54 /* ShahidUIElements */ = {
 			isa = PBXGroup;
 			children = (
+				A2F1432528C7F2730091CCAF /* ReactiveButton */,
 				A2F1432028C7CC000091CCAF /* Upsell */,
 				A2F1431F28C76FC70091CCAF /* DataModels */,
 				A2F1431228C7611F0091CCAF /* Carousel */,
@@ -292,7 +306,9 @@
 				A2FF13A028BA746A002F4F54 /* AppDelegate.swift in Sources */,
 				A2F142F528C4ED840091CCAF /* BoxView.swift in Sources */,
 				A2FF13BC28BAB214002F4F54 /* UIView+Utils.swift in Sources */,
+				A2F1432928C7F2980091CCAF /* ReactiveViewController.swift in Sources */,
 				A2F1431828C764710091CCAF /* HCardCell.swift in Sources */,
+				A2F1432728C7F2870091CCAF /* ReactiveButton.swift in Sources */,
 				A2F1430828C534200091CCAF /* AppUtils.swift in Sources */,
 				A2FF13B928BAAF83002F4F54 /* Colors.swift in Sources */,
 				A2F1431C28C76F970091CCAF /* Networking.swift in Sources */,

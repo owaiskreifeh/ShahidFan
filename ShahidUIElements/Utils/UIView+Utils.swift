@@ -49,6 +49,7 @@ extension UIView {
     func addBlurEffect(style: UIBlurEffect.Style){
         backgroundColor = .clear;
         let blurEffect = UIBlurEffect(style: style)
+        
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
         insertSubview(blurView, at: 0);

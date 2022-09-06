@@ -44,8 +44,8 @@ extension MainViewController {
         let swipeUpGesture = UIPanGestureRecognizer(target: self, action: #selector(boxSwiped))
         box.addGestureRecognizer(swipeUpGesture);
         
-        backgroundImage.fetchRemote(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXSgJ6mAU5MGFgFeWMyL_fN8zTfC2ul1C4PGiPLTxrEyQLutzZug8ck2-PUq3RnKQBoKI&usqp=CAU");
-        
+        backgroundImage.fetchRemote(url: "https://images.squarespace-cdn.com/content/v1/5e949a92e17d55230cd1d44f/1636123984810-E1VU52Y79R03T8X8JDOE/RainbowAppleIDiPAd.png");
+        backgroundImage.clipsToBounds = true;
         boxBackgroundImage.fetchRemote(url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MMMP3_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1645136903902")
     }
     
