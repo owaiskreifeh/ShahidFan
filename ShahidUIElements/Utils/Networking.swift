@@ -11,9 +11,8 @@ enum NetworkError: Error {
     case serverError, decodeError;
 }
 
-func fetchCarousel(_ completion: @escaping (Result<[Channel], NetworkError>) -> Void) {
-    let path = "https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/vod-hls.json"
-    if let url = URL(string: path) {
+func fetchCarousel(_ fromUrl: String, completion: @escaping (Result<[Channel], NetworkError>) -> Void) {
+    if let url = URL(string: fromUrl) {
         let session = URLSession(configuration: .default);
         let task = session.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {

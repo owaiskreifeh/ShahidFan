@@ -42,10 +42,7 @@ class HCardCell: UITableViewCell  {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200.0, height: 200.0)
-    }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()

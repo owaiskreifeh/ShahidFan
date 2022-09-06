@@ -12,7 +12,11 @@ class HCarouselView: UIView {
     
     let tableView = UITableView();
     
-    var channels: [Channel] = [];
+    var items: [Channel] = [] {
+        didSet {
+            tableView.reloadData();
+        }
+    }
     
     var onChannelTouch: ((_: Channel)->Void)?;
     
@@ -26,25 +30,12 @@ class HCarouselView: UIView {
         
         style(); // @TODO:
         layout(); // @TODO:
-        
-        fetchCarousel { result in
-            switch result {
-            case .failure(let error):
-                print("Error while fetching channels, ", error);
-            case .success(let channelsArray):
-                self.channels = channelsArray;
-                self.tableView.reloadData();
-            }
-        }
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder);
     }
     
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200.0, height: 200.0)
-    }
 }
 
 extension HCarouselView {
@@ -52,7 +43,7 @@ extension HCarouselView {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false;
         tableView.translatesAutoresizingMaskIntoConstraints = false;
-        transform = CGAffineTransform(rotationAngle: -1.57079632679);
+        tableView.transform = CGAffineTransform(rotationAngle: -1.57079632679);
         tableView.backgroundColor = AppColors.BoxBackground
         tableView.sectionHeaderHeight = 0;
         tableView.separatorColor = .clear
@@ -62,10 +53,10 @@ extension HCarouselView {
         addSubview(tableView);
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            tableView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            tableView.widthAnchor.constraint(equalTo: heightAnchor),
+            tableView.heightAnchor.constraint(equalTo: widthAnchor),
         ])
     }
     
@@ -81,7 +72,7 @@ extension HCarouselView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let onChannelTouch = onChannelTouch {
-            onChannelTouch(channels[indexPath.row])
+            onChannelTouch(items[indexPath.row])
         }
     }
 
@@ -95,12 +86,12 @@ extension HCarouselView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return channels.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.HCardCellId, for: indexPath) as! HCardCell;
-        let channel = channels[indexPath.row]
+        let channel = items[indexPath.row]
         cell.title = channel.title;
         cell.imageUrl = channel.logo ?? "https://cdn-icons-png.flaticon.com/512/295/295489.png";
         
