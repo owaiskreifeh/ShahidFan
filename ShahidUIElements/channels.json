@@ -1,0 +1,93 @@
+
+[
+  {
+    "logo": "https://i.imgur.com/CwwRn4b.png",
+    "title": "General,2M Monde (360p)",
+    "url": "https://cdnamd-hls-globecast.akamaized.net/live/ramdisk/2m_monde/hls_video_ts_tuhawxpiemz257adfc/2m_monde.m3u8"
+  },
+  {
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/7/71/Nothing_whitespace_blank.png",
+    "title": "Undefined,7ala TV [Geo-blocked]",
+    "url": "http://vstream3.hadara.ps:8081/7alafm2020/7alafm2020/playlist.m3u8"
+  },
+  {
+    "logo": "https://www.lyngsat.com/logo/tv/aa/a-one-tv-jo.png",
+    "title": "Undefined,A One TV",
+    "url": "https://master.starmena-cloud.com/hls/a1jo.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/WhPlJzh.jpeg",
+    "title": "Religious,ABNsat (720p)",
+    "url": "http://rtmp1.abnsat.com/hls/arabic.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/g7IRorO.jpeg",
+    "title": "Undefined,Abu Dhabi Aloula (1080p)",
+    "url": "https://admdn2.cdn.mangomolo.com/adtv/smil:adtv.stream.smil/playlist.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/169yyqE.png",
+    "title": "Undefined,Abu Dhabi Emirates (1080p)",
+    "url": "https://admdn3.cdn.mangomolo.com/emarat/smil:emarat.stream.smil/playlist.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/lKl2wZH.png",
+    "title": "Sports,Abu Dhabi Sports 1 (1080p)",
+    "url": "https://admdn1.cdn.mangomolo.com/adsports1/smil:adsports1.stream.smil/playlist.m3u8"
+  },
+  {
+    "logo": "https://www.lyngsat.com/logo/tv/aa/abu-dhabi-sports-2-ae.png",
+    "title": "Sports,Abu Dhabi Sports 2 (1080p)",
+    "url": "https://admdn5.cdn.mangomolo.com/adsports2/smil:adsports2.stream.smil/playlist.m3u8"
+  },
+  {
+    "logo": "https://statres.cdn.mgmlcdn.com/analytics/uploads/164/5e3ad6cc72.png",
+    "title": "Sports,Abu Dhabi Sports 4 (1080p) [Geo-blocked]",
+    "url": "https://admdn4ta.cdn.mgmlcdn.com/adsports4/smil:adsports4.stream.smil/playlist.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/hs7XEGV.png",
+    "title": "General,Access Sacramento Channel 18",
+    "url": "https://reflect-access-sacramento.cablecast.tv/live-8/live/live.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/soDiTxg.jpeg",
+    "title": "Undefined,Africa TV 1",
+    "url": "http://africatv.live.net.sa:1935/live/africatv/playlist.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/FVwwXan.jpeg",
+    "title": "Undefined,Africa TV 2",
+    "url": "http://africatv.live.net.sa:1935/live/africatv2/playlist.m3u8"
+  },
+  {
+    "logo": "https://upload.wikimedia.org/wikipedia/en/e/eb/AghapyTV.jpg",
+    "title": "Religious,Aghapy TV (1080p) [Not 24/7]",
+    "url": "https://5b622f07944df.streamlock.net/aghapy.tv/aghapy.smil/playlist.m3u8"
+  },
+  {
+    "logo": "https://www.lyngsat.com/logo/tv/aa/ajman_tv.png",
+    "title": "Undefined,Ajman TV [Not 24/7]",
+    "url": "https://dacastmmd.mmdlive.lldns.net/dacastmmd/d3e9fc3b874a46159ce3724d802e3f8d/playlist.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/j1Xmygq.jpg",
+    "title": "General,Ajyal TV (720p) [Not 24/7]",
+    "url": "http://htvajyal.mada.ps:8888/ajyal/index.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/jY1u1zz.png",
+    "title": "News,Al Alam (360p) [Not 24/7]",
+    "url": "https://live2.alalam.ir/alalam.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/KonAcvc.jpeg",
+    "title": "Undefined,Al Alamiya 2",
+    "url": "http://82.212.74.98:8000/live/7815.m3u8"
+  },
+  {
+    "logo": "https://i.imgur.com/ZFHjIVU.png",
+    "title": "General,Al Aoula Laayoune (360p)",
+    "url": "https://cdnamd-hls-globecast.akamaized.net/live/ramdisk/al_aoula_laayoune/hls_snrt/al_aoula_laayoune.m3u8"
+  }
+]
