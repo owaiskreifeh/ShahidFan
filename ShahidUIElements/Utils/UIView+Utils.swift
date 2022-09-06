@@ -44,4 +44,19 @@ extension UIView {
             }
         })
     }
+    
+    
+    func addBlurEffect(style: UIBlurEffect.Style){
+        backgroundColor = .clear;
+        let blurEffect = UIBlurEffect(style: style)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        insertSubview(blurView, at: 0);
+        NSLayoutConstraint.activate([
+          blurView.topAnchor.constraint(equalTo: topAnchor),
+          blurView.leadingAnchor.constraint(equalTo: leadingAnchor),
+          blurView.heightAnchor.constraint(equalTo: heightAnchor),
+          blurView.widthAnchor.constraint(equalTo: widthAnchor)
+        ])
+    }
 }

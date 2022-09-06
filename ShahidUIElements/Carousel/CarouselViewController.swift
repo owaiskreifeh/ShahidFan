@@ -42,15 +42,27 @@ class CarouselViewController: UIViewController {
     }
     
     func onChannelTouch(_ channel: Channel) {
+        print("is Modal", isModal)
         playerCtrl.assetUri = channel.url;
-        navigationController?.pushViewController(playerCtrl, animated: true)
+
+        if (isModal) {
+            playerCtrl.modalPresentationStyle = .formSheet;
+            present(playerCtrl, animated: true)
+        } else {
+            navigationController?.pushViewController(playerCtrl, animated: true)
+        }
+        
     }
     
 }
 
 extension CarouselViewController {
     func style(){
-        view.backgroundColor = AppColors.BoxBackground;
+        if (isModal) {
+            view.addBlurEffect(style: .dark)
+        } else {
+            view.backgroundColor = AppColors.BoxBackground;
+        }
     }
     
     func layout(){

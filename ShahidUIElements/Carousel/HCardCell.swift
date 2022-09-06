@@ -13,7 +13,7 @@ class HCardCell: UITableViewCell  {
     let id = K.HCardCellId;
     let logoImageView = UIImageView();
     let label = UILabel();
-    let subView = BoxView(type: .primary)
+    let subView = BoxView(type: .normal)
     
     var imageUrl = "" {
         didSet {
@@ -60,6 +60,9 @@ extension HCardCell {
         subView.translatesAutoresizingMaskIntoConstraints = false;
 
         backgroundColor = .clear;
+        contentView.backgroundColor = .clear
+        
+        subView.addBlurEffect(style: .light)
     }
     
     func layout() {

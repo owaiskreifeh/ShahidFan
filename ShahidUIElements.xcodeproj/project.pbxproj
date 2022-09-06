@@ -25,13 +25,15 @@
 		A2F1431A28C7654C0091CCAF /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431928C7654C0091CCAF /* UIImageView+Utils.swift */; };
 		A2F1431C28C76F970091CCAF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431B28C76F970091CCAF /* Networking.swift */; };
 		A2F1431E28C76FA80091CCAF /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431D28C76FA80091CCAF /* Channel.swift */; };
+		A2F1432228C7CC100091CCAF /* UpsellModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432128C7CC100091CCAF /* UpsellModalView.swift */; };
+		A2F1432428C7D1DA0091CCAF /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */; };
 		A2FF13A028BA746A002F4F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF139F28BA746A002F4F54 /* AppDelegate.swift */; };
 		A2FF13A928BA746C002F4F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13A828BA746C002F4F54 /* Assets.xcassets */; };
 		A2FF13AC28BA746C002F4F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13AA28BA746C002F4F54 /* LaunchScreen.storyboard */; };
 		A2FF13B528BA74F3002F4F54 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF13B428BA74F3002F4F54 /* MainViewController.swift */; };
 		A2FF13B728BA7616002F4F54 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF13B628BA7616002F4F54 /* ButtonView.swift */; };
 		A2FF13B928BAAF83002F4F54 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF13B828BAAF83002F4F54 /* Colors.swift */; };
-		A2FF13BC28BAB214002F4F54 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF13BB28BAB214002F4F54 /* UIView+Gradient.swift */; };
+		A2FF13BC28BAB214002F4F54 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF13BB28BAB214002F4F54 /* UIView+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		A2F1431928C7654C0091CCAF /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		A2F1431B28C76F970091CCAF /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A2F1431D28C76FA80091CCAF /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		A2F1432128C7CC100091CCAF /* UpsellModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellModalView.swift; sourceTree = "<group>"; };
+		A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		A2FF139C28BA746A002F4F54 /* ShahidUIElements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShahidUIElements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FF139F28BA746A002F4F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FF13A828BA746C002F4F54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +65,7 @@
 		A2FF13B428BA74F3002F4F54 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A2FF13B628BA7616002F4F54 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		A2FF13B828BAAF83002F4F54 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		A2FF13BB28BAB214002F4F54 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		A2FF13BB28BAB214002F4F54 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,14 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		A2F1432028C7CC000091CCAF /* Upsell */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1432128C7CC100091CCAF /* UpsellModalView.swift */,
+			);
+			path = Upsell;
+			sourceTree = "<group>";
+		};
 		A2FF139328BA746A002F4F54 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +168,7 @@
 		A2FF139E28BA746A002F4F54 /* ShahidUIElements */ = {
 			isa = PBXGroup;
 			children = (
+				A2F1432028C7CC000091CCAF /* Upsell */,
 				A2F1431F28C76FC70091CCAF /* DataModels */,
 				A2F1431228C7611F0091CCAF /* Carousel */,
 				A2F1430028C532540091CCAF /* Player */,
@@ -187,11 +200,12 @@
 			children = (
 				A2F1431B28C76F970091CCAF /* Networking.swift */,
 				A2FF13B828BAAF83002F4F54 /* Colors.swift */,
-				A2FF13BB28BAB214002F4F54 /* UIView+Gradient.swift */,
+				A2FF13BB28BAB214002F4F54 /* UIView+Utils.swift */,
 				A2F142FE28C4FB030091CCAF /* Constants.swift */,
 				A2F1430728C534200091CCAF /* AppUtils.swift */,
 				A2F1430C28C6501F0091CCAF /* Double+Utils.swift */,
 				A2F1431928C7654C0091CCAF /* UIImageView+Utils.swift */,
+				A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -277,14 +291,16 @@
 			files = (
 				A2FF13A028BA746A002F4F54 /* AppDelegate.swift in Sources */,
 				A2F142F528C4ED840091CCAF /* BoxView.swift in Sources */,
-				A2FF13BC28BAB214002F4F54 /* UIView+Gradient.swift in Sources */,
+				A2FF13BC28BAB214002F4F54 /* UIView+Utils.swift in Sources */,
 				A2F1431828C764710091CCAF /* HCardCell.swift in Sources */,
 				A2F1430828C534200091CCAF /* AppUtils.swift in Sources */,
 				A2FF13B928BAAF83002F4F54 /* Colors.swift in Sources */,
 				A2F1431C28C76F970091CCAF /* Networking.swift in Sources */,
 				A2F1430B28C53B020091CCAF /* PlayerProgressBarView.swift in Sources */,
+				A2F1432428C7D1DA0091CCAF /* UIViewController+Utils.swift in Sources */,
 				A2F1430D28C6501F0091CCAF /* Double+Utils.swift in Sources */,
 				A2FF13B528BA74F3002F4F54 /* MainViewController.swift in Sources */,
+				A2F1432228C7CC100091CCAF /* UpsellModalView.swift in Sources */,
 				A2F1430628C532930091CCAF /* PlayerViewController.swift in Sources */,
 				A2FF13B728BA7616002F4F54 /* ButtonView.swift in Sources */,
 				A2F142FB28C4F4D50091CCAF /* BaseView.swift in Sources */,

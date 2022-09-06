@@ -44,9 +44,10 @@ extension HCarouselView {
         translatesAutoresizingMaskIntoConstraints = false;
         tableView.translatesAutoresizingMaskIntoConstraints = false;
         tableView.transform = CGAffineTransform(rotationAngle: -1.57079632679);
-        tableView.backgroundColor = AppColors.BoxBackground
+        
         tableView.sectionHeaderHeight = 0;
         tableView.separatorColor = .clear
+        tableView.backgroundColor = .clear
     }
     
     func layout() {
@@ -74,6 +75,7 @@ extension HCarouselView: UITableViewDelegate {
         if let onChannelTouch = onChannelTouch {
             onChannelTouch(items[indexPath.row])
         }
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }

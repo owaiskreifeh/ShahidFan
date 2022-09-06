@@ -11,6 +11,8 @@ class MainViewController: UIViewController {
     
     let carouselCtrl = CarouselViewController();
     
+    let backgroundImage = UIImageView();
+    
     let stackView = UIStackView();
     let label = UILabel();
     
@@ -18,6 +20,11 @@ class MainViewController: UIViewController {
     let channelsButton = ButtonView(type: .secondary);
     let box = BoxView();
     let inputText = TextInputView();
+    
+    let swipeUpLabel = UILabel();
+    let boxBackgroundImage = UIImageView();
+    
+    var didBoxSwiped = false;
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -32,46 +39,89 @@ extension MainViewController {
     func setup(){
         buttonRotate.addTarget(self, action: #selector(rotateButton), for: .touchUpInside)
         channelsButton.addTarget(self, action: #selector(goToChannels), for: .touchUpInside)
+        
+        box.isUserInteractionEnabled = true;
+        let swipeUpGesture = UIPanGestureRecognizer(target: self, action: #selector(boxSwiped))
+        box.addGestureRecognizer(swipeUpGesture);
+        
+        backgroundImage.fetchRemote(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXSgJ6mAU5MGFgFeWMyL_fN8zTfC2ul1C4PGiPLTxrEyQLutzZug8ck2-PUq3RnKQBoKI&usqp=CAU");
+        
+        boxBackgroundImage.fetchRemote(url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MMMP3_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1645136903902")
     }
     
     func style(){
         stackView.translatesAutoresizingMaskIntoConstraints = false;
         stackView.axis = .vertical;
         stackView.spacing = 20;
-                
+        
         label.translatesAutoresizingMaskIntoConstraints = false;
         label.text = "TEXT LABEL TODO";
         label.font = UIFont.preferredFont(forTextStyle: .title1);
         
         box.translatesAutoresizingMaskIntoConstraints = false;
-        box.backgroundColor = AppColors.BoxBackground;
-        
+        box.addBlurEffect(style: .light);
         buttonRotate.translatesAutoresizingMaskIntoConstraints = false;
         buttonRotate.label = "Press To Rotate";
         buttonRotate.setImage(.init(systemName: "cloud"), for: []);
-
+        
         channelsButton.translatesAutoresizingMaskIntoConstraints = false;
         channelsButton.label = "Go To Channels";
         
         inputText.translatesAutoresizingMaskIntoConstraints = false;
         inputText.placeholder = "Placeholder"
+        
+        // box elms
+        swipeUpLabel.translatesAutoresizingMaskIntoConstraints = false;
+        swipeUpLabel.textAlignment = .center;
+        swipeUpLabel.text = "Swipe up to open channels";
+        
+        
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false;
+        backgroundImage.contentMode = .scaleAspectFill
+        
+        
+        boxBackgroundImage.translatesAutoresizingMaskIntoConstraints = false;
+        boxBackgroundImage.contentMode = .scaleAspectFill
+        
     }
     
     func layout(){
+        
         stackView.addArrangedSubview(label);
         stackView.addArrangedSubview(inputText);
         stackView.addArrangedSubview(channelsButton);
-
+        
         stackView.addArrangedSubview(buttonRotate);
         stackView.addArrangedSubview(box);
         
+        //        box.addSubview(boxBackgroundImage);
+        box.addSubview(swipeUpLabel);
+        
+        view.addSubview(backgroundImage);
         view.addSubview(stackView);
         
         NSLayoutConstraint.activate([
+            
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
             box.heightAnchor.constraint(equalToConstant: 64*2),
+            
+            // box elms
+            swipeUpLabel.topAnchor.constraint(equalTo: box.topAnchor),
+            swipeUpLabel.leadingAnchor.constraint(equalTo: box.leadingAnchor),
+            swipeUpLabel.bottomAnchor.constraint(equalTo: box.bottomAnchor),
+            swipeUpLabel.trailingAnchor.constraint(equalTo: box.trailingAnchor),
+            
+            //            boxBackgroundImage.topAnchor.constraint(equalTo: box.topAnchor),
+            //            boxBackgroundImage.leadingAnchor.constraint(equalTo: box.leadingAnchor),
+            //            boxBackgroundImage.bottomAnchor.constraint(equalTo: box.bottomAnchor),
+            //            boxBackgroundImage.trailingAnchor.constraint(equalTo: box.trailingAnchor),
         ])
     }
 }
@@ -86,12 +136,40 @@ extension MainViewController {
         case .secondary: sender.type = .primary;
         case .primary: sender.type = .normal;
         case .normal: sender.type = .disabled;
-
+            
         }
     }
     
     
     @objc func goToChannels(_ sender: ButtonView) {
         self.navigationController?.pushViewController(carouselCtrl, animated: true)
+    }
+    
+    
+    @objc func boxSwiped(_ gesture: UIPanGestureRecognizer){
+        print("didBoxSwiped", didBoxSwiped, gesture.velocity(in: box).y)
+        if didBoxSwiped { return };
+        if gesture.velocity(in: box).y < -1300 {
+            didBoxSwiped = true;
+            print("here swiped")
+            carouselCtrl.modalTransitionStyle = .coverVertical;
+            carouselCtrl.modalPresentationStyle = .popover;
+            present(carouselCtrl, animated: true) {
+                self.didBoxSwiped = false
+            };
+        }
+        
+//        let translation = gesture.translation(in: box);
+//        let x = gesture.view?.center.x;
+//        let y = gesture.view?.center.y;
+//
+//        if(translation.x <= 20 && translation.y <= 20 )
+//        {
+//            gesture.view?.center=CGPoint(x: x!+translation.x, y: y!+translation.y)
+//
+//            UIView.animate(withDuration: 1000, delay: 0) {
+//                gesture.setTranslation(CGPoint.zero, in: self.view)
+//            }
+//        }
     }
 }
