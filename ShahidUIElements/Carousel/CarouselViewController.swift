@@ -8,20 +8,33 @@
 import UIKit;
 
 class CarouselViewController: UIViewController {
-
+    
+    
+    let scrollView = UIScrollView();
+    let contentView = UIView();
+    
     let hCarousel1 = HCarouselView();
     let hCarousel2 = HCarouselView();
-
+    let spinner = SpinnerView();
+    
     let playerCtrl = PlayerViewController();
-
+    
+    let stackView = UIStackView();
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         hCarousel1.onChannelTouch = onChannelTouch(_:);
         hCarousel2.onChannelTouch = onChannelTouch(_:);
-
+        
         style();
         layout();
         
+        spinner.animate()
+
+        let group = DispatchGroup();
+        
+        group.enter();
         fetchCarousel("https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/vod-hls.json") { result in
             switch result {
             case .failure(let error):
@@ -29,8 +42,11 @@ class CarouselViewController: UIViewController {
             case .success(let channelsArray):
                 self.hCarousel1.items = channelsArray;
             }
+            group.leave();
+            
         }
         
+        group.enter()
         fetchCarousel("https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/live_channels.json") { result in
             switch result {
             case .failure(let error):
@@ -38,13 +54,18 @@ class CarouselViewController: UIViewController {
             case .success(let channelsArray):
                 self.hCarousel2.items = channelsArray;
             }
+            
+            group.leave();
+        }
+        
+        group.notify(queue: .main) {
+            self.spinner.stop();
         }
     }
     
     func onChannelTouch(_ channel: Channel) {
-        print("is Modal", isModal)
         playerCtrl.assetUri = channel.url;
-
+        
         if (isModal) {
             playerCtrl.modalPresentationStyle = .formSheet;
             present(playerCtrl, animated: true)
@@ -63,23 +84,46 @@ extension CarouselViewController {
         } else {
             view.backgroundColor = AppColors.BoxBackground;
         }
+        
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false;
+        contentView.translatesAutoresizingMaskIntoConstraints = false;
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false;
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
     }
     
     func layout(){
-        view.addSubview(hCarousel1);
-        view.addSubview(hCarousel2);
+        
+        view.addSubview(scrollView)
+        view.addSubview(spinner);
+
+        scrollView.addSubview(contentView);
+        contentView.addSubview(stackView);
+
+        stackView.addArrangedSubview(hCarousel1);
+        stackView.addArrangedSubview(hCarousel2);
+        
 
         NSLayoutConstraint.activate([
-            hCarousel1.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 0),
-            hCarousel1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            hCarousel1.heightAnchor.constraint(equalToConstant: 200),
-            hCarousel1.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
-            hCarousel2.topAnchor.constraint(equalToSystemSpacingBelow: hCarousel1.bottomAnchor, multiplier: 0),
-            hCarousel2.heightAnchor.constraint(equalToConstant: 200),
-            hCarousel2.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-
+            contentView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 1),
+            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentView.bottomAnchor, multiplier: 1),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }

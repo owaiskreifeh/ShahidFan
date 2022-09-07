@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "m3ukit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/omaralbeik/M3UKit.git",
+      "state" : {
+        "revision" : "7049452f01f642efe7c9e8ba788155cd7cd05b2d",
+        "version" : "0.6.0"
+      }
+    }
+  ],
+  "version" : 2
+}

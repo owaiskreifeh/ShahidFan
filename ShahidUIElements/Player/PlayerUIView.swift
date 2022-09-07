@@ -138,7 +138,6 @@ extension PlayerUIView: PlayPauseViewDelegate {
             player?.pause();
             playPauseView.isPaused = true;
         default:
-            print("Default status", player?.timeControlStatus)
             player?.play();
             playPauseView.isPaused = false;
         }

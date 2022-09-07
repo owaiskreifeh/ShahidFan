@@ -147,11 +147,9 @@ extension MainViewController {
     
     
     @objc func boxSwiped(_ gesture: UIPanGestureRecognizer){
-        print("didBoxSwiped", didBoxSwiped, gesture.velocity(in: box).y)
         if didBoxSwiped { return };
         if gesture.velocity(in: box).y < -1300 {
             didBoxSwiped = true;
-            print("here swiped")
             carouselCtrl.modalTransitionStyle = .coverVertical;
             carouselCtrl.modalPresentationStyle = .pageSheet;
             if let presentationController = carouselCtrl.presentationController as? UISheetPresentationController {

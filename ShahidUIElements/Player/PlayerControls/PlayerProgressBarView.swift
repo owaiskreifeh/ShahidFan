@@ -19,7 +19,7 @@ class PlayerProgressBarView: UIView {
     
     let baseSlider = UISlider();
     let seekView = UIView();
-    let seekableFrags: [UIView] = [];
+    var seekableFrags: [UIView] = [];
     let durationLabel = UILabel();
     let currentTimeLabel = UILabel();
     var isLive = false;
@@ -27,6 +27,8 @@ class PlayerProgressBarView: UIView {
     
     var duration: Double = 0 {
         didSet {
+            baseSlider.value = 0;
+            seekableFrags.removeAll()
             if Float(duration) > baseSlider.minimumValue {
                 baseSlider.maximumValue = Float(duration);
                 durationLabel.text = AppUtility.secondsToHMS(duration)
@@ -37,8 +39,6 @@ class PlayerProgressBarView: UIView {
                 baseSlider.thumbTintColor = AppColors.Primary;
                 baseSlider.alpha = 1
                 baseSlider.isEnabled = true;
-                
-                
             } else {
                 durationLabel.text = " LIVE "
                 isLive = true;
@@ -63,9 +63,7 @@ class PlayerProgressBarView: UIView {
     
     var seekRanges: [NSValue] = [] {
         didSet {
-            if (!isLive) {
-                updateSeekableFragsUI()
-            }
+            updateSeekableFragsUI()
         }
     }
     
@@ -160,7 +158,6 @@ extension PlayerProgressBarView {
 // MARK: - Actions
 extension PlayerProgressBarView {
     @objc func sliderTouchUp(_ sender: UISlider){
-        print(baseSlider.value)
         let time = CMTime(seconds: Double(baseSlider.value), preferredTimescale: 60000)
         delegate?.progressBarSeek(time, sender: self)
         beginSeeking = false;
@@ -169,7 +166,6 @@ extension PlayerProgressBarView {
     
     @objc func sliderTouchDown(_ sender: UISlider){
         beginSeeking = true;
-        print("down pressed")
     }
     
     @objc func sliderValueChanged(_ sender: UISlider){

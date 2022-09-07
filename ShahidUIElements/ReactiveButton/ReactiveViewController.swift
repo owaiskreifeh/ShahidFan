@@ -60,7 +60,6 @@ extension ReactiveViewController {
 
 extension ReactiveViewController {
     @objc func btnTapped(_ sender: ReactiveButton){
-        print("here")
         navigationController?.pushViewController(mainVC, animated: true)
     }
 }

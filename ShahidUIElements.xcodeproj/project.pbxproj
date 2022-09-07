@@ -25,10 +25,11 @@
 		A2F1431A28C7654C0091CCAF /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431928C7654C0091CCAF /* UIImageView+Utils.swift */; };
 		A2F1431C28C76F970091CCAF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431B28C76F970091CCAF /* Networking.swift */; };
 		A2F1431E28C76FA80091CCAF /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1431D28C76FA80091CCAF /* Channel.swift */; };
-		A2F1432228C7CC100091CCAF /* UpsellModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432128C7CC100091CCAF /* UpsellModalView.swift */; };
+		A2F1432228C7CC100091CCAF /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432128C7CC100091CCAF /* Spinner.swift */; };
 		A2F1432428C7D1DA0091CCAF /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */; };
 		A2F1432728C7F2870091CCAF /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432628C7F2870091CCAF /* ReactiveButton.swift */; };
 		A2F1432928C7F2980091CCAF /* ReactiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */; };
+		A2F1432E28C942560091CCAF /* M3UKit in Frameworks */ = {isa = PBXBuildFile; productRef = A2F1432D28C942560091CCAF /* M3UKit */; };
 		A2FF13A028BA746A002F4F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF139F28BA746A002F4F54 /* AppDelegate.swift */; };
 		A2FF13A928BA746C002F4F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13A828BA746C002F4F54 /* Assets.xcassets */; };
 		A2FF13AC28BA746C002F4F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13AA28BA746C002F4F54 /* LaunchScreen.storyboard */; };
@@ -57,7 +58,7 @@
 		A2F1431928C7654C0091CCAF /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		A2F1431B28C76F970091CCAF /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A2F1431D28C76FA80091CCAF /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
-		A2F1432128C7CC100091CCAF /* UpsellModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsellModalView.swift; sourceTree = "<group>"; };
+		A2F1432128C7CC100091CCAF /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		A2F1432628C7F2870091CCAF /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
 		A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F1432E28C942560091CCAF /* M3UKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,12 +147,12 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
-		A2F1432028C7CC000091CCAF /* Upsell */ = {
+		A2F1432028C7CC000091CCAF /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A2F1432128C7CC100091CCAF /* UpsellModalView.swift */,
+				A2F1432128C7CC100091CCAF /* Spinner.swift */,
 			);
-			path = Upsell;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A2F1432528C7F2730091CCAF /* ReactiveButton */ = {
@@ -182,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				A2F1432528C7F2730091CCAF /* ReactiveButton */,
-				A2F1432028C7CC000091CCAF /* Upsell */,
+				A2F1432028C7CC000091CCAF /* Components */,
 				A2F1431F28C76FC70091CCAF /* DataModels */,
 				A2F1431228C7611F0091CCAF /* Carousel */,
 				A2F1430028C532540091CCAF /* Player */,
@@ -248,6 +250,9 @@
 			dependencies = (
 			);
 			name = ShahidUIElements;
+			packageProductDependencies = (
+				A2F1432D28C942560091CCAF /* M3UKit */,
+			);
 			productName = ShahidUIElements;
 			productReference = A2FF139C28BA746A002F4F54 /* ShahidUIElements.app */;
 			productType = "com.apple.product-type.application";
@@ -276,6 +281,9 @@
 				Base,
 			);
 			mainGroup = A2FF139328BA746A002F4F54;
+			packageReferences = (
+				A2F1432C28C942560091CCAF /* XCRemoteSwiftPackageReference "M3UKit" */,
+			);
 			productRefGroup = A2FF139D28BA746A002F4F54 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -316,7 +324,7 @@
 				A2F1432428C7D1DA0091CCAF /* UIViewController+Utils.swift in Sources */,
 				A2F1430D28C6501F0091CCAF /* Double+Utils.swift in Sources */,
 				A2FF13B528BA74F3002F4F54 /* MainViewController.swift in Sources */,
-				A2F1432228C7CC100091CCAF /* UpsellModalView.swift in Sources */,
+				A2F1432228C7CC100091CCAF /* Spinner.swift in Sources */,
 				A2F1430628C532930091CCAF /* PlayerViewController.swift in Sources */,
 				A2FF13B728BA7616002F4F54 /* ButtonView.swift in Sources */,
 				A2F142FB28C4F4D50091CCAF /* BaseView.swift in Sources */,
@@ -536,6 +544,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A2F1432C28C942560091CCAF /* XCRemoteSwiftPackageReference "M3UKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omaralbeik/M3UKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A2F1432D28C942560091CCAF /* M3UKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2F1432C28C942560091CCAF /* XCRemoteSwiftPackageReference "M3UKit" */;
+			productName = M3UKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A2FF139428BA746A002F4F54 /* Project object */;
 }
