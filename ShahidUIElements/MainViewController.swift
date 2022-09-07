@@ -153,23 +153,27 @@ extension MainViewController {
             didBoxSwiped = true;
             print("here swiped")
             carouselCtrl.modalTransitionStyle = .coverVertical;
-            carouselCtrl.modalPresentationStyle = .popover;
+            carouselCtrl.modalPresentationStyle = .pageSheet;
+            if let presentationController = carouselCtrl.presentationController as? UISheetPresentationController {
+                presentationController.detents = [.medium(), .large(),]
+            }
+            
             present(carouselCtrl, animated: true) {
                 self.didBoxSwiped = false
             };
         }
         
-//        let translation = gesture.translation(in: box);
-//        let x = gesture.view?.center.x;
-//        let y = gesture.view?.center.y;
-//
-//        if(translation.x <= 20 && translation.y <= 20 )
-//        {
-//            gesture.view?.center=CGPoint(x: x!+translation.x, y: y!+translation.y)
-//
-//            UIView.animate(withDuration: 1000, delay: 0) {
-//                gesture.setTranslation(CGPoint.zero, in: self.view)
-//            }
-//        }
+        //        let translation = gesture.translation(in: box);
+        //        let x = gesture.view?.center.x;
+        //        let y = gesture.view?.center.y;
+        //
+        //        if(translation.x <= 20 && translation.y <= 20 )
+        //        {
+        //            gesture.view?.center=CGPoint(x: x!+translation.x, y: y!+translation.y)
+        //
+        //            UIView.animate(withDuration: 1000, delay: 0) {
+        //                gesture.setTranslation(CGPoint.zero, in: self.view)
+        //            }
+        //        }
     }
 }
