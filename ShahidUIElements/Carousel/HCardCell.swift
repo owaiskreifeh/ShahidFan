@@ -47,7 +47,10 @@ class HCardCell: UITableViewCell  {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = bounds
-
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: 200, height: 400)
     }
 }
 
@@ -76,7 +79,6 @@ extension HCardCell {
             contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: subView.trailingAnchor, multiplier: 1),
             subView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 2),
             contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: subView.bottomAnchor, multiplier: 2),
-            
             // logo image
             logoImageView.topAnchor.constraint(equalTo: subView.topAnchor),
             logoImageView.leadingAnchor.constraint(equalTo: subView.leadingAnchor),

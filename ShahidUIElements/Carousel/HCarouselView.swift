@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import M3UKit
 
 class HCarouselView: UIView {
     
@@ -60,6 +61,7 @@ extension HCarouselView {
             tableView.heightAnchor.constraint(equalTo: widthAnchor),
         ])
     }
+
     
 }
 
@@ -77,7 +79,33 @@ extension HCarouselView: UITableViewDelegate {
         }
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+}
 
+
+// MARK: - Utils
+extension HCarouselView {
+    func buildFromPlaylistUrl(_ url: String) {
+        if let url = URL(string: url) {
+            let playlistParser = PlaylistParser();
+            playlistParser.parse(url) { result in
+                switch result {
+                case .success(let playlist):
+                    var channels: [Channel] = [];
+                    playlist.medias.forEach { media in
+                        let channel = Channel(logo: media.attributes.logo,
+                                              title: media.name,
+                                              url: media.url.absoluteString)
+                        
+                        channels.append(channel)
+                    }
+                    self.items = channels;
+                case .failure(let error):
+                    print("failed parsing m3u", error)
+                }
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -99,5 +127,5 @@ extension HCarouselView: UITableViewDataSource {
         
         return cell;
     }
-        
+    
 }

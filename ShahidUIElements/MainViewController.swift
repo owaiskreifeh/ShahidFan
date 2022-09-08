@@ -9,7 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let carouselCtrl = CarouselViewController();
+    let hCarouselCtrl = CarouselViewController();
+    let landingCtrl = LandingViewController();
     
     let backgroundImage = UIImageView();
     
@@ -65,7 +66,7 @@ extension MainViewController {
         buttonRotate.setImage(.init(systemName: "cloud"), for: []);
         
         channelsButton.translatesAutoresizingMaskIntoConstraints = false;
-        channelsButton.label = "Go To Channels";
+        channelsButton.label = "Go To Landing";
         
         inputText.translatesAutoresizingMaskIntoConstraints = false;
         inputText.placeholder = "Placeholder"
@@ -142,7 +143,7 @@ extension MainViewController {
     
     
     @objc func goToChannels(_ sender: ButtonView) {
-        self.navigationController?.pushViewController(carouselCtrl, animated: true)
+        self.navigationController?.pushViewController(landingCtrl, animated: true)
     }
     
     
@@ -150,13 +151,13 @@ extension MainViewController {
         if didBoxSwiped { return };
         if gesture.velocity(in: box).y < -1300 {
             didBoxSwiped = true;
-            carouselCtrl.modalTransitionStyle = .coverVertical;
-            carouselCtrl.modalPresentationStyle = .pageSheet;
-            if let presentationController = carouselCtrl.presentationController as? UISheetPresentationController {
+            hCarouselCtrl.modalTransitionStyle = .coverVertical;
+            hCarouselCtrl.modalPresentationStyle = .pageSheet;
+            if let presentationController = hCarouselCtrl.presentationController as? UISheetPresentationController {
                 presentationController.detents = [.medium(), .large(),]
             }
             
-            present(carouselCtrl, animated: true) {
+            present(hCarouselCtrl, animated: true) {
                 self.didBoxSwiped = false
             };
         }

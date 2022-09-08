@@ -30,6 +30,11 @@
 		A2F1432728C7F2870091CCAF /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432628C7F2870091CCAF /* ReactiveButton.swift */; };
 		A2F1432928C7F2980091CCAF /* ReactiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */; };
 		A2F1432E28C942560091CCAF /* M3UKit in Frameworks */ = {isa = PBXBuildFile; productRef = A2F1432D28C942560091CCAF /* M3UKit */; };
+		A2F1433128CA2DFF0091CCAF /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1433028CA2DFF0091CCAF /* Carousel.swift */; };
+		A2F1433B28CA38400091CCAF /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1433A28CA38400091CCAF /* LandingViewController.swift */; };
+		A2F1433F28CA44960091CCAF /* CCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1433D28CA44960091CCAF /* CCardViewCell.swift */; };
+		A2F1434028CA44960091CCAF /* CCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F1433E28CA44960091CCAF /* CCardViewCell.xib */; };
+		A2F1434228CA59400091CCAF /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1434128CA59400091CCAF /* CarouselCell.swift */; };
 		A2FF13A028BA746A002F4F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF139F28BA746A002F4F54 /* AppDelegate.swift */; };
 		A2FF13A928BA746C002F4F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13A828BA746C002F4F54 /* Assets.xcassets */; };
 		A2FF13AC28BA746C002F4F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FF13AA28BA746C002F4F54 /* LaunchScreen.storyboard */; };
@@ -62,6 +67,11 @@
 		A2F1432328C7D1DA0091CCAF /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		A2F1432628C7F2870091CCAF /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
 		A2F1432828C7F2980091CCAF /* ReactiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewController.swift; sourceTree = "<group>"; };
+		A2F1433028CA2DFF0091CCAF /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
+		A2F1433A28CA38400091CCAF /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		A2F1433D28CA44960091CCAF /* CCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCardViewCell.swift; sourceTree = "<group>"; };
+		A2F1433E28CA44960091CCAF /* CCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CCardViewCell.xib; sourceTree = "<group>"; };
+		A2F1434128CA59400091CCAF /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		A2FF139C28BA746A002F4F54 /* ShahidUIElements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShahidUIElements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FF139F28BA746A002F4F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FF13A828BA746C002F4F54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +174,26 @@
 			path = ReactiveButton;
 			sourceTree = "<group>";
 		};
+		A2F1432F28CA2DEC0091CCAF /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1433C28CA44790091CCAF /* CCardCell */,
+				A2F1433028CA2DFF0091CCAF /* Carousel.swift */,
+				A2F1433A28CA38400091CCAF /* LandingViewController.swift */,
+				A2F1434128CA59400091CCAF /* CarouselCell.swift */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		A2F1433C28CA44790091CCAF /* CCardCell */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1433D28CA44960091CCAF /* CCardViewCell.swift */,
+				A2F1433E28CA44960091CCAF /* CCardViewCell.xib */,
+			);
+			path = CCardCell;
+			sourceTree = "<group>";
+		};
 		A2FF139328BA746A002F4F54 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +213,7 @@
 		A2FF139E28BA746A002F4F54 /* ShahidUIElements */ = {
 			isa = PBXGroup;
 			children = (
+				A2F1432F28CA2DEC0091CCAF /* Landing */,
 				A2F1432528C7F2730091CCAF /* ReactiveButton */,
 				A2F1432028C7CC000091CCAF /* Components */,
 				A2F1431F28C76FC70091CCAF /* DataModels */,
@@ -300,6 +331,7 @@
 			files = (
 				A2F1430F28C65D610091CCAF /* channels.json in Resources */,
 				A2FF13AC28BA746C002F4F54 /* LaunchScreen.storyboard in Resources */,
+				A2F1434028CA44960091CCAF /* CCardViewCell.xib in Resources */,
 				A2FF13A928BA746C002F4F54 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +352,7 @@
 				A2F1430828C534200091CCAF /* AppUtils.swift in Sources */,
 				A2FF13B928BAAF83002F4F54 /* Colors.swift in Sources */,
 				A2F1431C28C76F970091CCAF /* Networking.swift in Sources */,
+				A2F1434228CA59400091CCAF /* CarouselCell.swift in Sources */,
 				A2F1430B28C53B020091CCAF /* PlayerProgressBarView.swift in Sources */,
 				A2F1432428C7D1DA0091CCAF /* UIViewController+Utils.swift in Sources */,
 				A2F1430D28C6501F0091CCAF /* Double+Utils.swift in Sources */,
@@ -329,13 +362,16 @@
 				A2FF13B728BA7616002F4F54 /* ButtonView.swift in Sources */,
 				A2F142FB28C4F4D50091CCAF /* BaseView.swift in Sources */,
 				A2F1431E28C76FA80091CCAF /* Channel.swift in Sources */,
+				A2F1433B28CA38400091CCAF /* LandingViewController.swift in Sources */,
 				A2F142F828C4F2E60091CCAF /* TextInput.swift in Sources */,
 				A2F1430228C532640091CCAF /* PlayerView.swift in Sources */,
+				A2F1433F28CA44960091CCAF /* CCardViewCell.swift in Sources */,
 				A2F1431128C65FBB0091CCAF /* PlayPauseView.swift in Sources */,
 				A2F142FF28C4FB030091CCAF /* Constants.swift in Sources */,
 				A2F1431428C761380091CCAF /* HCarouselView.swift in Sources */,
 				A2F1431628C763320091CCAF /* CarouselViewController.swift in Sources */,
 				A2F1431A28C7654C0091CCAF /* UIImageView+Utils.swift in Sources */,
+				A2F1433128CA2DFF0091CCAF /* Carousel.swift in Sources */,
 				A2F1430428C5327E0091CCAF /* PlayerUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

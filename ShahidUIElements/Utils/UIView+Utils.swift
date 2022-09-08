@@ -47,6 +47,9 @@ extension UIView {
     
     
     func addBlurEffect(style: UIBlurEffect.Style){
+
+        // @TODO: remove previous blur views
+        
         backgroundColor = .clear;
         let blurEffect = UIBlurEffect(style: style)
         

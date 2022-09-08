@@ -6,6 +6,7 @@
 //
 
 import UIKit;
+import M3UKit
 
 class CarouselViewController: UIViewController {
     
@@ -13,8 +14,7 @@ class CarouselViewController: UIViewController {
     let scrollView = UIScrollView();
     let contentView = UIView();
     
-    let hCarousel1 = HCarouselView();
-    let hCarousel2 = HCarouselView();
+    var carousels: [HCarouselView] = [];
     let spinner = SpinnerView();
     
     let playerCtrl = PlayerViewController();
@@ -24,42 +24,64 @@ class CarouselViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        hCarousel1.onChannelTouch = onChannelTouch(_:);
-        hCarousel2.onChannelTouch = onChannelTouch(_:);
-        
         style();
         layout();
         
         spinner.animate()
-
+        
         let group = DispatchGroup();
         
-        group.enter();
-        fetchCarousel("https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/vod-hls.json") { result in
-            switch result {
-            case .failure(let error):
-                print("Error while fetching channels, ", error);
-            case .success(let channelsArray):
-                self.hCarousel1.items = channelsArray;
-            }
-            group.leave();
-            
-        }
+//        group.enter();
+//        fetchCarousel("https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/vod-hls.json") { result in
+//            switch result {
+//            case .failure(let error):
+//                print("Error while fetching channels, ", error);
+//            case .success(let channelsArray):
+//                let carousel = HCarouselView();
+//                carousel.items = channelsArray;
+//                self.carousels.append(carousel);
+//            }
+//            group.leave();
+//
+//        }
+//
+//        group.enter()
+//        fetchCarousel("https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/live_channels.json") { result in
+//            switch result {
+//            case .failure(let error):
+//                print("Error while fetching channels, ", error);
+//            case .success(let channelsArray):
+//                let carousel = HCarouselView();
+//                carousel.items = channelsArray;
+//                self.carousels.append(carousel);
+//            }
+//
+//            group.leave();
+//        }
+//
         
         group.enter()
-        fetchCarousel("https://raw.githubusercontent.com/owaiskreifeh/jsons_snippets/main/live_channels.json") { result in
-            switch result {
-            case .failure(let error):
-                print("Error while fetching channels, ", error);
-            case .success(let channelsArray):
-                self.hCarousel2.items = channelsArray;
-            }
-            
-            group.leave();
+        [
+            "https://iptv-org.github.io/iptv/regions/mena.m3u",
+            "https://iptv-org.github.io/iptv/categories/movies.m3u",
+            "https://iptv-org.github.io/iptv/categories/music.m3u",
+            "https://iptv-org.github.io/iptv/categories/sports.m3u",
+            "https://iptv-org.github.io/iptv/categories/documentary.m3u",
+        ].forEach { urlString in
+            let carousel = HCarouselView();
+            carousel.buildFromPlaylistUrl(urlString);
+            carousels.append(carousel);
         }
         
-        group.notify(queue: .main) {
+        group.leave();
+        
+        group.notify(queue: .main) { [unowned self] in
             self.spinner.stop();
+            self.carousels.forEach { carousel in
+                carousel.onChannelTouch = onChannelTouch(_:);
+                carousel.heightAnchor.constraint(greaterThanOrEqualToConstant: 200).isActive = true;
+                stackView.addArrangedSubview(carousel)
+            }
         }
     }
     
@@ -89,41 +111,53 @@ extension CarouselViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false;
         contentView.translatesAutoresizingMaskIntoConstraints = false;
         
+//        scrollView.backgroundColor = .red;
+//        contentView.backgroundColor = .blue;
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false;
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillEqually;
+        stackView.alignment = .fill;
     }
     
     func layout(){
         
         view.addSubview(scrollView)
         view.addSubview(spinner);
-
+        
         scrollView.addSubview(contentView);
         contentView.addSubview(stackView);
-
-        stackView.addArrangedSubview(hCarousel1);
-        stackView.addArrangedSubview(hCarousel2);
         
-
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
-            contentView.topAnchor.constraint(equalToSystemSpacingBelow: scrollView.topAnchor, multiplier: 1),
-            scrollView.bottomAnchor.constraint(equalToSystemSpacingBelow: contentView.bottomAnchor, multiplier: 1),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1),
+            contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1),
+            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1),
+            contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 1),
+
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        
+        let contentViewCenterY = contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
+        contentViewCenterY.priority = .defaultLow
+
+        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+
+        NSLayoutConstraint.activate([
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentViewCenterY,
+            contentViewHeight
         ])
     }
 }

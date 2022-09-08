@@ -11,4 +11,6 @@ class K {
     static let cornerRadius: CGFloat = 30.0;
     
     static let HCardCellId = "HCardCellId";
+    static let CardCellId = "CardCellId";
+    static let CarouselCellId = "CCarouselCellId";
 }
